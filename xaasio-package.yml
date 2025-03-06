@@ -1,0 +1,52 @@
+---
+name: Install specified package on VMs based on user input
+hosts: all
+become: yes
+vars_prompt:
+- name: host_ip
+prompt: "Enter the host IP"
+private: no
+
+- name: host_username
+prompt: "Enter the host username"
+private: no
+
+- name: host_password
+prompt: "Enter the host password"
+private: yes
+
+- name: package_name
+prompt: "Enter the package name"
+private: no
+
+tasks:
+- name: Install package on Debian or Ubuntu
+apt:
+name: "{{ package_name }}"
+state: present
+when: ansible_os_family == "Debian"
+delegate_to: "{{ host_ip }}"
+vars:
+ansible_ssh_user: "{{ host_username }}"
+ansible_ssh_pass: "{{ host_password }}"
+
+- name: Install package on RHEL, CentOS, or Fedora
+yum:
+name: "{{ package_name }}"
+state: present
+when: ansible_os_family == "RedHat"
+delegate_to: "{{ host_ip }}"
+vars:
+ansible_ssh_user: "{{ host_username }}"
+ansible_ssh_pass: "{{ host_password }}"
+
+- name: Ensure the package is running (generic service)
+service:
+name: "{{ package_name }}"
+state: started
+enabled: yes
+when: (ansible_os_family == "Debian" or ansible_os_family == "RedHat")
+delegate_to: "{{ host_ip }}"
+vars:
+ansible_ssh_user: "{{ host_username }}"
+ansible_ssh_pass: "{{ host_password }}"
