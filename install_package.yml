@@ -1,0 +1,9 @@
+---
+- name: Installing package on RHEL
+  hosts: all
+
+  tasks:
+  - name: Installing package using YUM Module
+    yum:
+      name: "{{ package_name }}"
+      state: "{{ package_status }}"
