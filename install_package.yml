@@ -1,7 +1,9 @@
 ---
-- hosts: all
+- name: Install Package
+  hosts: all
   tasks:
-    - name: Ensure the package is installed on Debian-based systems
+    - name: Install package
       yum:
-        name: "{{ package_name }}"
+        name: "{{ package }}"
         state: present
+      when: package is defined
