@@ -1,7 +1,6 @@
 ---
 - name: Install specified package on remote hosts
   hosts: localhost
-  become: yes
   vars:
     host_ip: "{{ host_ip }}"
     host_username: "{{ host_username }}"
