@@ -3,10 +3,10 @@
   hosts: localhost
   become: yes
   vars:
-    host_ip: "{{ host_ip }}"
-    host_username: "{{ host_username }}"
-    host_password: "{{ host_password }}"
-    package_name: "{{ package_name }}"
+    host_ip: "{{ param_host_ip }}"
+    host_username: "{{ param_host_username }}"
+    host_password: "{{ param_host_password }}"
+    package_name: "{{ param_package_name }}"
 
   tasks:
     - name: Ensure the package is installed on Debian-based systems
