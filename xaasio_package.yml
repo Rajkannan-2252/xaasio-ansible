@@ -1,22 +1,22 @@
-  ---
-  - name: Install specified package on remote hosts
-    hosts: localhost
-    become: yes
-    vars:
-      host_ip: "{{ host_ip }}"
-      host_username: "{{ host_username }}"
-      host_password: "{{ host_password }}"
-      package_name: "{{ package_name }}"
+---
+- name: Install specified package on remote hosts
+  hosts: localhost
+  become: yes
+  vars:
+    host_ip: "{{ host_ip }}"
+    host_username: "{{ host_username }}"
+    host_password: "{{ host_password }}"
+    package_name: "{{ package_name }}"
 
-    tasks:
-      - name: Ensure the package is installed on Debian-based systems
-        apt:
-          name: "{{ package_name }}"
-          state: present
-        when: ansible_os_family == "Debian"
+  tasks:
+    - name: Ensure the package is installed on Debian-based systems
+      apt:
+        name: "{{ package_name }}"
+        state: present
+      when: ansible_os_family == "Debian"
 
-      - name: Ensure the package is installed on RedHat-based systems
-        yum:
-          name: "{{ package_name }}"
-          state: present
-        when: ansible_os_family == "RedHat"
+    - name: Ensure the package is installed on RedHat-based systems
+      yum:
+        name: "{{ package_name }}"
+        state: present
+      when: ansible_os_family == "RedHat"
