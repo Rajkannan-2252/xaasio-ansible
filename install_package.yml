@@ -5,5 +5,3 @@
       yum:
         name: "{{ package_name }}"
         state: present
-      
-   
