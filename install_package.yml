@@ -13,5 +13,4 @@
       apt:
         name: "{{ package }}"
         state: present
-        update_cache: yes  # Good practice to update apt cache
       when: ansible_os_family == "Debian" and package is defined
