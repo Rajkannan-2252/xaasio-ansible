@@ -1,5 +1,5 @@
 ---
-  hosts: all
+- hosts: all
   tasks:
     - name: Ensure the package is installed on Debian-based systems
       yum:
