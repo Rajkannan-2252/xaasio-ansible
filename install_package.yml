@@ -1,7 +1,6 @@
 ---
 - name: Install Package
   hosts: all
-  become: yes  # Add privilege escalation
   tasks:
     - name: Install package on RedHat-based systems
       yum:
