@@ -1,5 +1,5 @@
 ---
-name: Install specified package on remote hosts
+- name: Install specified package on remote hosts
 hosts: localhost
 become: yes
 vars:
