@@ -1,9 +1,8 @@
 ---
 - name: Install specified package on remote hosts
-  hosts: "{{ target_hosts }}"
+  hosts: all
   gather_facts: yes
   vars:
-    ansible_host: "{{ target_hosts }}"
     ansible_user: "{{ host_username }}"
     ansible_ssh_pass: "{{ host_password }}"
     ansible_connection: ssh
