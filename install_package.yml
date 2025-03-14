@@ -1,24 +1,9 @@
 ---
-- name: Install specified package on remote hosts
+- name: Install Package
   hosts: all
-  gather_facts: yes
-  vars:
-    ansible_user: "{{ host_username }}"
-    ansible_ssh_pass: "{{ host_password }}"
-    ansible_connection: ssh
-    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-    package_name: "{{ package_name }}"
-  tasks:
-    - name: Ensure the package is installed on Debian-based systems
-      apt:
-        name: "{{ package_name }}"
-        state: present
-      when: ansible_os_family == "Debian"
-      become: yes
+  vars: 
+    package: from_playbook
 
-    - name: Ensure the package is installed on RedHat-based systems
-      yum:
-        name: "{{ package_name }}"
-        state: present
-      when: ansible_os_family == "RedHat"
-      become: yes
+  tasks:
+  - name: Install package
+    yum: name={{ package }} state=present
