@@ -1,4 +1,3 @@
-#Vm delete its continues more 2hours power off
 # Automate Method: delete_powered_off_vms
 begin
   $evm.log(:info, "Starting delete_powered_off_vms")
