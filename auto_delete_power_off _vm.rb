@@ -16,11 +16,12 @@ begin
   deleted_count = 0
   
   # Define OpenStack provider connection details
+    # Change the correct Ems id, os_auth_url and password 
   PROVIDERS = {
     '1000000000007' => { 
-      os_auth_url: "http://192.168.150.15:5000/v3",
+      os_auth_url: "http://192.168.xxx.xx:5000/v3", #change the correct os_auth_url
       os_username: "admin",
-      os_password: "OIJ1VV92s7QnbKidMjPF1tX0f3fdCrcGlHMjPxzH",
+      os_password: "zzzzzzzzzzzzzzz", #change the correct password
       os_domain_name: "Default"
     }
   }
