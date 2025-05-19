@@ -1,15 +1,18 @@
-name: Deploy OpenShift Pod
-hosts: localhost
-tasks:
-- name: Create Pod
-kubernetes.core.k8s:
-definition:
-apiVersion: v1
-kind: Pod
-metadata:
-name: "{{ pod_name }}"
-namespace: "{{ namespace }}"
-spec:
-containers:
-- name: nginx
-image: "{{ image }}"
+---
+- name: Deploy OpenShift Pod
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create Pod
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: "{{ pod_name }}"
+            namespace: "{{ namespace }}"
+          spec:
+            containers:
+              - name: nginx
+                image: "{{ image }}"
